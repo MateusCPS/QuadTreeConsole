@@ -13,11 +13,12 @@ namespace QuadTree
 {
     class Player : Objects
     {
-        
+
         private Texture2D player;
         private Vector2 dimensions;
 
-        public Player(string path, Vector2 position, Vector2 dimensions) {
+        public Player(string path, Vector2 position, Vector2 dimensions)
+        {
 
             player = Manager.contentManager.Load<Texture2D>(path);
             this.speed = 500;
@@ -55,14 +56,16 @@ namespace QuadTree
             return this.destiny;
         }
 
-        public void Update(GameTime gameTime) {
+        public void Update(GameTime gameTime)
+        {
             Movement(gameTime);
         }
 
         public void Draw()
         {
-            if(player != null) {
-                Manager.spriteBatch.Draw(player, new Rectangle((int)(position.X), (int)(position.Y), (int)dimensions.X, (int)dimensions.Y), null, Color.White, 0.0f, new Vector2(player.Bounds.Width/2, player.Bounds.Height/2), new SpriteEffects(), 0);
+            if (player != null)
+            {
+                Manager.spriteBatch.Draw(player, new Rectangle((int)(position.X), (int)(position.Y), (int)dimensions.X, (int)dimensions.Y), null, Color.White, 0.0f, new Vector2(player.Bounds.Width / 2, player.Bounds.Height / 2), new SpriteEffects(), 0);
             }
         }
     }

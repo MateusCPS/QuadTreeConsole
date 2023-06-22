@@ -11,7 +11,7 @@ namespace QuadTree
 {
     class Manager
     {
-        public static SpriteBatch spriteBatch; 
+        public static SpriteBatch spriteBatch;
         public static ContentManager contentManager;
     }
 }

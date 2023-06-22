@@ -19,16 +19,15 @@ namespace QuadTree
         Up
     }
 
-    class DinamicObject : Objects 
+    class DinamicObject : Objects
     {
-        Rectangle rectangle;
         Texture2D texture;
         Random random = new Random();
         MovementState currentState;
-        Vector2 dimensions;
         float aiSpeed;
 
-        public DinamicObject(Vector2 position) {
+        public DinamicObject(Vector2 position)
+        {
 
             currentState = MovementState.Idle;
 
@@ -42,8 +41,8 @@ namespace QuadTree
 
             texture = Manager.contentManager.Load<Texture2D>("2d\\test");
             rectangle = new Rectangle((int)(this.position.X), (int)(this.position.Y), (int)this.dimensions.X, (int)this.dimensions.Y);
-            this.speed = random.Next(1000);
-        }  
+            this.speed = random.Next(500);
+        }
 
         private void Movement(GameTime gameTime)
         {
@@ -89,19 +88,56 @@ namespace QuadTree
                     newDestination.X++;
                     break;
             }
+
+            if (isColliding == true)
+            {
+                if (MovementState.Left == currentState)
+                {
+                    currentState = MovementState.Right;
+                }
+                else if (MovementState.Up == currentState)
+                {
+                    currentState = MovementState.Down;
+                }
+                else if (MovementState.Right == currentState)
+                {
+                    currentState = MovementState.Left;
+                }
+                else
+                {
+                    currentState = MovementState.Up;
+                }
+
+            }
             return newDestination;
         }
-        
+
         public void Update(GameTime gameTime)
         {
             this.destiny = RandomMovement();
             Movement(gameTime);
         }
 
+        public bool Collision(Objects obj)
+        {
+            if (obj != null && rectangle.Intersects(obj.GetBounds()))
+            {
+                this.isColliding = true;
+            }
+            return this.isColliding;
+        }
 
         public void Draw()
         {
-            Manager.spriteBatch.Draw(texture, rectangle, null, Color.Gray, 0.0f, new Vector2(texture.Bounds.Width / 2, texture.Bounds.Height / 2), new SpriteEffects(), 0);
+            if (this.isColliding == true)
+            {
+                Manager.spriteBatch.Draw(texture, rectangle, null, Color.Red, 0.0f, new Vector2(texture.Bounds.Width / 2, texture.Bounds.Height / 2), new SpriteEffects(), 0);
+            }
+            else
+            {
+                Manager.spriteBatch.Draw(texture, rectangle, null, Color.Gray, 0.0f, new Vector2(texture.Bounds.Width / 2, texture.Bounds.Height / 2), new SpriteEffects(), 0);
+            }
+
         }
     }
 }

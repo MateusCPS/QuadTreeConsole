@@ -10,6 +10,7 @@ namespace QuadTree
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         Player _player;
+        Objects[] _objects;
         DinamicObject[] _dinamicObject;
         StaticObject[] _staticObjects;
         int maxGameObject = 50;
@@ -33,9 +34,10 @@ namespace QuadTree
             Manager.contentManager = this.Content;
             Manager.spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _player = new Player("2d\\test", new Vector2(GraphicsDevice.Viewport.Width/2, GraphicsDevice.Viewport.Height / 2), new Vector2(10, 10));
+            _player = new Player("2d\\test", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), new Vector2(10, 10));
             _dinamicObject = new DinamicObject[maxGameObject];
             _staticObjects = new StaticObject[maxGameObject];
+            _objects = new Objects[maxGameObject * 2 + 1];
 
             for (int i = 0; i < maxGameObject; i++)
             {
@@ -54,6 +56,7 @@ namespace QuadTree
             {
                 _dinamicObject[i].Update(gameTime);
                 _staticObjects[i].Update(gameTime);
+
             }
 
             base.Update(gameTime);

@@ -4,7 +4,7 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/marce/source/repos/QuadTree/QuadTree/Content/2D/test.png</File>
+    <File>D:/GameJam+/QuadTreeConsole/QuadTree/QuadTree/Content/2D/test.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

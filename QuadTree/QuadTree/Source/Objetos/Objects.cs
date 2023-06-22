@@ -11,18 +11,22 @@ namespace QuadTree
 {
     abstract class Objects
     {
-        protected Vector2 position, destiny;
+        protected Vector2 position, destiny, dimensions;
         protected float speed;
+        protected Rectangle rectangle;
+        protected bool isColliding = false;
+        protected Objects[] obj;
 
         protected virtual void Movement(float speed, Vector2 destiny, GameTime gameTime)
         {
             Vector2 direction = destiny - position;
             float distance = direction.Length();
 
-            if (distance > 0){
+            if (distance > 0)
+            {
                 direction.Normalize();
                 Vector2 displacement = direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if(displacement.Length() > distance)
+                if (displacement.Length() > distance)
                 {
                     position = destiny;
                 }
@@ -33,20 +37,10 @@ namespace QuadTree
             }
         }
 
-        protected virtual void OnCollisionEnter(Rectangle rectangle)
+        public virtual Rectangle GetBounds()
         {
-            rectangle.Intersects(rectangle);
-        }
-
-        protected virtual bool OnCollisionExit()
-        {
-            bool offCollision = false;
-            return offCollision;
-        }
-
-        protected virtual void OnCollisionStay()
-        {
-
+            rectangle = new Rectangle((int)(this.position.X), (int)(this.position.Y), (int)this.dimensions.X, (int)this.dimensions.Y);
+            return rectangle;
         }
     }
 }

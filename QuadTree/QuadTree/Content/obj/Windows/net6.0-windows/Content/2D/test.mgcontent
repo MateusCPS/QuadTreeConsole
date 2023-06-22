@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/marce/source/repos/QuadTree/QuadTree/Content/2D/test.png</SourceFile>
+  <SourceFile>D:/GameJam+/QuadTreeConsole/QuadTree/QuadTree/Content/2D/test.png</SourceFile>
   <SourceTime>2023-06-15T21:33:00.116525-03:00</SourceTime>
-  <DestFile>C:/Users/marce/source/repos/QuadTree/QuadTree/Content/bin/Windows/Content/2D/test.xnb</DestFile>
-  <DestTime>2023-06-15T21:45:40.2606787-03:00</DestTime>
+  <DestFile>D:/GameJam+/QuadTreeConsole/QuadTree/QuadTree/Content/bin/Windows/Content/2D/test.xnb</DestFile>
+  <DestTime>2023-06-21T21:31:16.2546543-03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T08:44:56-03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
